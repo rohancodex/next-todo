@@ -9,5 +9,6 @@ export async function GET(request: Request) {
   //   },
   // });
   const tasks = await prisma.task.findMany({ where: { is_completed: false } });
+
   return NextResponse.json({ tasks });
 }

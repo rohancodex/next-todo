@@ -6,11 +6,19 @@ import { Checkbox } from "@/components/ui/checkBox";
 const inter = Inter({ subsets: ["latin"] });
 
 export default async function Todo() {
-  const response = await fetch("http://localhost:3000/api/task");
+  const response = await fetch("http://localhost:3000/api/task", {
+    next: { revalidate: 60 },
+  });
   const { tasks } = await response.json();
-  // const day = new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(
-  //   Date.now()
-  // );
+  interface Task {
+    id: number;
+    title: string;
+    description: string;
+    is_completed: boolean;
+    created_at: Date;
+    updated_at: Date;
+  }
+
   const formatDate = (date: Date) => {
     return new Intl.DateTimeFormat("en-US", {
       day: "numeric",
@@ -23,11 +31,11 @@ export default async function Todo() {
       <div className="text-xl my-5">Remaining Tasks ({tasks?.length})</div>
       <div>
         <ul>
-          {tasks?.map((task: any) => (
+          {tasks?.map((task: Task) => (
             <Card key={task?.id}>
               <CardContent className="flex items-center gap-5 justify-between">
                 <div className="flex gap-4 items-center">
-                  <Checkbox />
+                  <Checkbox defaultChecked={task?.is_completed} />
                   <p className="text-md">{task?.title}</p>
                 </div>
                 <p className="text-gray-600 text-sm">
@@ -35,7 +43,6 @@ export default async function Todo() {
                 </p>
               </CardContent>
             </Card>
-            // <li key={task?.id}>{task?.title}</li>
           ))}
         </ul>
       </div>
