@@ -1,12 +1,6 @@
 import Image from "next/image";
-import { Atkinson_Hyperlegible } from "next/font/google";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-
-const inter = Atkinson_Hyperlegible({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-});
 
 export default async function Home() {
   return (
