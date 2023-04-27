@@ -19,7 +19,6 @@ export async function GET(request: Request) {
 export const POST = async(request:Request)=>{
   try {
     const body = await request.json();
-     console.log('body',body);
     // const result = bodySchema.safeParse(body);
     // if(!result.success){
     //   const formatted = result.error.format();

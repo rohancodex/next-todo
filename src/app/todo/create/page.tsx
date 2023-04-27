@@ -16,7 +16,7 @@ export default function CreateTask() {
   const createTask = async()=>{
       setIsLoading(true);
       if(task.title && task.description){
-        const res = await  fetch('http://localhost:3000/api/task',{
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/task`,{
             method:'POST',
             headers: {
                 'Content-Type': 'application/json'
