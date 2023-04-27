@@ -11,33 +11,28 @@ export default async function Todo() {
   const completedTasks = await fetchTasks(true)
   
   return (
-    <div className="">
+    <div>
       <div className="text-xl my-5 flex flex-col">
         Completed Tasks ({completedTasks?.length})
       </div>
-      <div>
-    
+      <div className="overflow-auto h-56">
           {completedTasks?.map((task: Task) => (
             <Task key={task.id} task={task} />
-          ))}
-      
+          ))}  
       </div>
       <div className="text-xl my-5 flex flex-col">
         Remaining Tasks ({pendingTasks?.length})
       </div>
-      <div>
-        <ul>
+      <div className="overflow-auto h-96">
           {pendingTasks?.map((task: Task) => (
             <Task key={task.id} task={task} />
           ))}
-        </ul>
       </div>
       <Link href="/todo/create">
       <Button className="fixed bottom-10 right-10" variant={"rounded"}>
         <Plus />
       </Button>
       </Link>
-  
     </div>
   );
 }

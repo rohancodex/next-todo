@@ -1,6 +1,7 @@
 'use client';
 
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -34,7 +35,7 @@ export default function CreateTask() {
   };
 
   return (
-    <div>
+    <Card className="p-5">
       <div className="text-xl my-5 flex flex-col gap-2">
         <Label htmlFor="title">Title</Label>
         <Input value={task.title} onChange={handleChange} name="title" id="title" placeholder="Buy Groceries "/>
@@ -47,6 +48,6 @@ export default function CreateTask() {
         {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin"/>}
         Create Task
       </Button>
-    </div>
+    </Card>
   );
 }

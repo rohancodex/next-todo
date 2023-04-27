@@ -13,7 +13,7 @@ export default function RootLayout({
   return (
     <div className="bg-slate-100 min-h-screen flex flex-col">
       <nav className="sticky top-0 text-center p-5 text-4xl font-bold">
-        <Link href="/">Todo</Link>
+        <Link href="/todo">Todo</Link>
       </nav>
       <main className="p-5">{children}</main>
     </div>
