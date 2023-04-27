@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkBox";
-import { fetchTasks, formatDate } from "./helper";
+import { fetchTasks, formatDate } from "@/helper";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { Task } from "@/components/Task";
