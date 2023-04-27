@@ -6,3 +6,5 @@ interface Task {
   created_at: Date;
   updated_at: Date;
 }
+
+type CreateTask = Pick<Task, "title" | "description">;
