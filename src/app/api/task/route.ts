@@ -42,6 +42,6 @@ export const PUT = async(request:Request)=>{
     console.log('rsult',dbResult);
     return NextResponse.json({message:'',error:dbResult})
   } catch(error){
-      console.log(error);
+    return NextResponse.json({message:'An error occured!',error:error},{status:400})
   }
 }
