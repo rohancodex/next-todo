@@ -1,4 +1,3 @@
-import { log } from "console";
 import { prisma } from "../../../lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 import z from 'zod';
@@ -26,10 +25,8 @@ export const POST = async(request:Request)=>{
     // }
 
     const data = await prisma.task.create({data:body});
-    console.log(data)
     return NextResponse.json({ data })
   } catch (error) {
-    console.log(error);
     return NextResponse.json({message:'An error occured!',error:error},{status:400})
   }
 }
@@ -39,7 +36,6 @@ export const PUT = async(request:Request)=>{
     const body = await request.json();
     // const result = bodySchema.safeParse(body);
     const dbResult = await prisma.task.update({where:{id:body?.id},data:{is_completed:body?.is_completed}});
-    console.log('rsult',dbResult);
     return NextResponse.json({message:'',error:dbResult})
   } catch(error){
     return NextResponse.json({message:'An error occured!',error:error},{status:400})

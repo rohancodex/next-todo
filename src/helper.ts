@@ -6,11 +6,19 @@ export const formatDate = (date: Date) => {
   };
   
   export const fetchTasks = async (is_completed:boolean=false) => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/task?is_completed=${is_completed}`, {
-      next: { revalidate: 0 },
-    });
-    const { tasks }: { tasks: Task[] } = await response.json();
-    return tasks;
+    try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/task?is_completed=${is_completed}`, {
+            next: { revalidate: 0 },
+          });
+          if(response){
+              const { tasks }: { tasks: Task[] } = await response.json();
+              return tasks;
+          }
+          return []
+    } catch (error) {
+        console.log('!!Error:',error)
+    }
+    
   };
   
   export const updateTask = async (id:number,is_completed:boolean)=>{

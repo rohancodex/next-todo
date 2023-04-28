@@ -6,6 +6,7 @@ import { Plus } from "lucide-react";
 import { Task } from "@/components/Task";
 import Link from "next/link";
 
+export const revalidate = false;
 export default async function Todo() {
   const pendingTasks = await fetchTasks();
   const completedTasks = await fetchTasks(true)
